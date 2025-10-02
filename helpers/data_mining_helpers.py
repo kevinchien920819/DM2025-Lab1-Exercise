@@ -1,5 +1,5 @@
 import nltk
-
+import re
 """
 Helper functions for data mining lab session 2018 Fall Semester
 Author: Elvis Saravia
@@ -36,3 +36,10 @@ def tokenize_text(text, remove_stopwords=False):
             # filters here
             tokens.append(word)
     return tokens
+
+# text cleaning function
+def clean_text(text):
+    text = text.lower()
+    text = re.sub(r'http\S+', '', text)   # 去掉網址
+    text = re.sub(r'[^a-z\s]', '', text) # 去掉非字母
+    return text
